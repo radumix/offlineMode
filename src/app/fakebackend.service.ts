@@ -10,6 +10,7 @@ export class FakebackendService {
 
   model: any[]=[];
   constructor() { 
+    //if connection is lost load jsonFile from storage else load from api backend.
     this.jsonLoader();
   }
   
