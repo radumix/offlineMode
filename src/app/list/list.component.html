@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Transaction List
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-grid>
+      <ion-row *ngFor="let item of fService.model">
+        <ion-col>
+          <div>{{item.title}}</div>
+        </ion-col>
+        <ion-col>
+          <div>{{item.description}}</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+
+  <ion-button size="small" type="button" slot="end" color="primary" (click)="clear()" expand="block">Clear Storage</ion-button>

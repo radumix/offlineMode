@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Transaction
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+<ion-content>
+    <form  #form="ngForm" (ngSubmit)="addTransaction(form)">
+        <ion-card>
+       
+            <ion-card-content>
+                <ion-item>
+                    <ion-label>Title: </ion-label>
+                    <ion-input  name="title" type="text" placeholder="Title Here" ngModel required></ion-input>
+                  </ion-item>
+                <ion-item>
+                    <ion-label>Description </ion-label>
+                  </ion-item>
+                <ion-item>
+                    <ion-textarea name="description"  ngModel required></ion-textarea>
+                  </ion-item>
+            </ion-card-content>
+            <ion-button  size="small" type="submit" [disabled]="form.invalid" expand="block">Add</ion-button>
+          </ion-card>
+    </form>
+
+    <ion-grid>
+        <ion-row *ngFor="let item of fService.model; let i = index">
+          <ion-col>
+           {{item.title}}
+          </ion-col>
+          <ion-col>
+              {{item.description}}
+          </ion-col>
+          <ion-col>
+              <ion-button (click)="remove(i)" size="small" color="warning">Remove</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    
+      
+      <ion-button *ngIf="fService.model.length>0">
+          <ion-button size="small" type="button" slot="end" color="primary" (click)="submit()" expand="block">Submit</ion-button>
+        </ion-button>
+</ion-content>
